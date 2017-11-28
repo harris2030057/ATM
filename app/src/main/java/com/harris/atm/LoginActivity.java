@@ -18,7 +18,7 @@ public class LoginActivity extends AppCompatActivity {
         EditText edUserid = (EditText) findViewById(R.id.userid);
         EditText edPasswd = (EditText) findViewById(R.id.userpasswd);
         String userid = edUserid.getText().toString();
-        String passwd = edUserid.getText().toString();
+        String passwd = edPasswd.getText().toString();
         if("jack".equals(userid) && "1234".equals(passwd)){
             Toast.makeText(this , "登入成功", Toast.LENGTH_LONG).show();
         }else {
