@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
     private final static  int REQUEST_LONGIN = 102;
@@ -19,12 +20,20 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == FUNC_LOGIN){
-            if (resultCode == RESULT_OK){
+        switch (requestCode){
+//        if (requestCode == FUNC_LOGIN) {
+            case REQUEST_LONGIN:
+            if (resultCode == RESULT_OK) {
                 String userid = data.getStringExtra("LOGIN_USERID");
                 String passwd = data.getStringExtra("LOGIN_PASSWD");
+
+                Toast.makeText(this, "登入帳號為：" + userid + "登入密碼為：" + passwd, Toast.LENGTH_LONG).show();
+                getSharedPreferences("atm", MODE_PRIVATE)
+                        .edit()
+                        .putString("USERID", userid)
+                        .apply();
                 Log.d("RESULT", userid + "/" + passwd);
-            }else {
+            } else {
                 finish();
             }
 
@@ -38,6 +47,14 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
+            }
+        });
         if(!logon){
             Intent intent = new Intent(this , LoginActivity.class);
            /* startActivity(intent);*/
