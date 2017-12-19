@@ -36,6 +36,20 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 finish();
             }
+            break;
+            case FUNC_LOGIN :
+                if (resultCode == RESULT_OK){
+                    String name = data.getStringExtra("nick name");
+                    String phone = data.getStringExtra("phonenumber");
+                    Toast.makeText(this, "nick name", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(this, "phonenumber", Toast.LENGTH_SHORT).show();
+                    getSharedPreferences("info" , MODE_PRIVATE)
+                            .edit()
+                            .putString("Name" , name)
+                            .putString("Number" , phone)
+                            .apply();
+                }
+                break;
 
         }
     }
@@ -47,14 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
         if(!logon){
             Intent intent = new Intent(this , LoginActivity.class);
            /* startActivity(intent);*/
@@ -62,6 +68,17 @@ public class MainActivity extends AppCompatActivity {
 
 
         }
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this , UserInfoActivity.class);
+                startActivityForResult(i , FUNC_LOGIN);
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+            }
+        });
+
     }
 
     @Override

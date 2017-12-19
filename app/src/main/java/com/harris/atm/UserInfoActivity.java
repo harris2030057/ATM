@@ -7,7 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 
 public class UserInfoActivity extends AppCompatActivity {
-    private final static  int FUNC_BACK = 102;
+
     private EditText edphone;
     private EditText edname;
 
