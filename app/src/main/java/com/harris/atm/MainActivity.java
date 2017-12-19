@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
                         .edit()
                         .putString("USERID", userid)
                         .apply();
-                Log.d("RESULT", userid + "/" + passwd);
+//                Log.d("RESULT", userid + "/" + passwd);
             } else {
                 finish();
             }
@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(MainActivity.this , UserInfoActivity.class);
                 startActivityForResult(i , FUNC_LOGIN);
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
 

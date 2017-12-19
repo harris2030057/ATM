@@ -44,5 +44,9 @@ public class LoginActivity extends AppCompatActivity {
                     .show();
 
         }
+
+    }
+    public void cancel (View view){
+
     }
 }
