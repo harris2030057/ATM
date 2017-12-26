@@ -17,6 +17,10 @@ public class UserInfoActivity extends AppCompatActivity {
     private EditText edphone;
     private EditText edname;
     private Spinner ages;
+    private final static  int REQUEST_LONGIN = 102;
+    Boolean logon = false ;
+    public static  final int FUNC_LOGIN = 1 ;
+
 
 
     @Override
@@ -53,5 +57,10 @@ public class UserInfoActivity extends AppCompatActivity {
         getIntent().putExtra("phonenumber", phone);
         setResult(RESULT_OK, getIntent());
         finish();
+    }
+    public void addr(View view){
+        Intent intent = new Intent(this , AddrActivity.class);
+        startActivityForResult(intent , REQUEST_LONGIN);
+
     }
 }
