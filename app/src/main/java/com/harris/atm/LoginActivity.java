@@ -8,6 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -47,8 +51,24 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
- 
+
+    public class LoginTask extends AsyncTask<String, Void , Integer>{
+        @Override
+        protected Integer doInBackground(String... strings) {
+            int data = 0;
+            try {
+                URL url = new URL(strings[0]);
+                InputStream is = url.openStream();
+                data = is.read();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return data;
+        }
+
     public void cancel (View view){
 
     }
-}
+}}
