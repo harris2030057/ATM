@@ -1,6 +1,7 @@
 package com.harris.atm;
 
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -46,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         }
 
     }
+ 
     public void cancel (View view){
 
     }
